@@ -176,7 +176,8 @@ fun TampilForm(cobaViewModel: CobaViewModel = viewModel()){
         telponnya =cobaViewModel.noTlp ,
         jenisnya = cobaViewModel.jenisKl,
         alamatnya = cobaViewModel.alamat,
-        emailnya = cobaViewModel.email
+        emailnya = cobaViewModel.email,
+        statusnya = cobaViewModel.statusnikah
     )
 }
 
@@ -245,7 +246,7 @@ fun SelectNikah(
 }
 
 @Composable
-fun TextHasil(namanya:String,telponnya:String,jenisnya:String,alamatnya:String, emailnya:String){
+fun TextHasil(namanya:String,telponnya:String,jenisnya:String,alamatnya:String, emailnya:String, statusnya:String){
     ElevatedCard (
         elevation = CardDefaults.cardElevation(
             defaultElevation = 6.dp
@@ -259,13 +260,16 @@ fun TextHasil(namanya:String,telponnya:String,jenisnya:String,alamatnya:String, 
         Text(text = "Telepon : " + telponnya,
             modifier = Modifier
                 .padding(horizontal = 10.dp, vertical = 5.dp))
+        Text(text = "Email : " + emailnya,
+            modifier = Modifier
+                .padding(horizontal = 10.dp, vertical = 5.dp))
         Text(text = "Jenis Kelamin : " + jenisnya,
             modifier = Modifier
                 .padding(horizontal = 10.dp, vertical = 5.dp))
-        Text(text = "Alamat : " + alamatnya,
+        Text(text = "Status : " + statusnya,
             modifier = Modifier
                 .padding(horizontal = 10.dp, vertical = 5.dp))
-        Text(text = "Email : " + emailnya,
+        Text(text = "Alamat : " + alamatnya,
             modifier = Modifier
                 .padding(horizontal = 10.dp, vertical = 5.dp))
     }
