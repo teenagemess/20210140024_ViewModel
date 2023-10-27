@@ -47,6 +47,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.formactivity.Data.CobaViewModel
 import com.example.formactivity.Data.DataForm
 import com.example.formactivity.Data.DataSource.jenis
+import com.example.formactivity.Data.DataSource.status
 import com.example.formactivity.ui.theme.FormActivityTheme
 
 class MainActivity : ComponentActivity() {
@@ -108,6 +109,7 @@ fun TampilForm(cobaViewModel: CobaViewModel = viewModel()){
 
 
     val context = LocalContext.current
+    val contextt = LocalContext.current
     val dataForm : DataForm
     val uiState by cobaViewModel.uiState.collectAsState()
     dataForm = uiState
@@ -147,6 +149,9 @@ fun TampilForm(cobaViewModel: CobaViewModel = viewModel()){
     SelectJK(
         options = jenis.map{ id -> context.resources.getString(id)},
         onSelectedChanged = {cobaViewModel.setJK(it)})
+
+
+
     OutlinedTextField(
         value = textAlamat,
         onValueChange = {textAlamat = it},
@@ -159,7 +164,7 @@ fun TampilForm(cobaViewModel: CobaViewModel = viewModel()){
     )
     ElevatedButton(
         modifier = Modifier.fillMaxWidth(),
-        onClick = {cobaViewModel.BacaData(textNama,texttlp,dataForm.sex,textAlamat,textEmail)
+        onClick = {cobaViewModel.BacaData(textNama,texttlp,dataForm.sex,textAlamat,textEmail, dataForm.stats)
     }){
         Text(text = stringResource(R.string.submit),
             fontSize = 16.sp)
@@ -176,6 +181,38 @@ fun TampilForm(cobaViewModel: CobaViewModel = viewModel()){
 
 @Composable
 fun SelectJK(
+    options: List<String>,
+    onSelectedChanged: (String) -> Unit = {}) {
+
+    var selectedValue by rememberSaveable { mutableStateOf("")
+    }
+    Column (modifier = Modifier.padding(16.dp)) {
+        options.forEach { item ->
+            Row (
+                modifier = Modifier.selectable(
+                    selected = selectedValue == item,
+                    onClick = {
+                        selectedValue = item
+                        onSelectedChanged(item)
+                    }
+                ),
+                verticalAlignment = Alignment.CenterVertically
+            ){
+                RadioButton(
+                    selected = selectedValue == item,
+                    onClick = {
+                        selectedValue = item
+                        onSelectedChanged(item)
+                    }
+                )
+                Text(item)
+            }
+        }
+    }
+}
+
+@Composable
+fun SelectNikah(
     options: List<String>,
     onSelectedChanged: (String) -> Unit = {}) {
 
