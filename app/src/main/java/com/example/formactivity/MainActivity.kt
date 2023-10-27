@@ -72,7 +72,8 @@ fun TampilLayout(modifier: Modifier = Modifier){
     val image = painterResource(id = R.drawable.back)
     Column(
         verticalArrangement = Arrangement.spacedBy(10.dp),
-        modifier = Modifier.padding(16.dp)
+        modifier = Modifier
+            .padding(16.dp)
     ) {
         Row(modifier = Modifier
             .fillMaxWidth()
@@ -144,11 +145,16 @@ fun TampilForm(cobaViewModel: CobaViewModel = viewModel()){
             .fillMaxWidth(),
         placeholder = { Text(text = "Masukkan Email anda")}
     )
-
+    Text(
+        fontSize = 15.sp,
+        text = "Jenis Kelamin : ")
     SelectJK(
         options = jenis.map{ id -> context.resources.getString(id)},
         onSelectedChanged = {cobaViewModel.setJK(it)})
 
+    Text(
+        fontSize = 15.sp,
+        text = "Status : ")
     SelectNikah(
         options = status.map { id -> context.resources.getString(id)},
         onSelectedChanged = {cobaViewModel.setNikah(it)})
@@ -170,7 +176,7 @@ fun TampilForm(cobaViewModel: CobaViewModel = viewModel()){
         Text(text = stringResource(R.string.submit),
             fontSize = 16.sp)
     }
-    Spacer(modifier = Modifier.height(20.dp))
+    Spacer(modifier = Modifier.height(0.dp))
     TextHasil(
         namanya = cobaViewModel.namaUsr,
         telponnya =cobaViewModel.noTlp ,
