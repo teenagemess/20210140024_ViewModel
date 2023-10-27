@@ -149,7 +149,9 @@ fun TampilForm(cobaViewModel: CobaViewModel = viewModel()){
         options = jenis.map{ id -> context.resources.getString(id)},
         onSelectedChanged = {cobaViewModel.setJK(it)})
 
-
+    SelectNikah(
+        options = status.map { id -> context.resources.getString(id)},
+        onSelectedChanged = {cobaViewModel.setNikah(it)})
 
     OutlinedTextField(
         value = textAlamat,
@@ -185,7 +187,7 @@ fun SelectJK(
 
     var selectedValue by rememberSaveable { mutableStateOf("")
     }
-    Column (modifier = Modifier.padding(16.dp)) {
+    Row (modifier = Modifier.padding(0.dp)) {
         options.forEach { item ->
             Row (
                 modifier = Modifier.selectable(
@@ -217,7 +219,7 @@ fun SelectNikah(
 
     var selectedValue by rememberSaveable { mutableStateOf("")
     }
-    Column (modifier = Modifier.padding(16.dp)) {
+    Row(modifier = Modifier.padding(0.dp)) {
         options.forEach { item ->
             Row (
                 modifier = Modifier.selectable(
