@@ -109,7 +109,6 @@ fun TampilForm(cobaViewModel: CobaViewModel = viewModel()){
 
 
     val context = LocalContext.current
-    val contextt = LocalContext.current
     val dataForm : DataForm
     val uiState by cobaViewModel.uiState.collectAsState()
     dataForm = uiState
