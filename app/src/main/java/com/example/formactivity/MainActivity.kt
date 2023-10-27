@@ -18,6 +18,7 @@ import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.Divider
 import androidx.compose.material3.ElevatedButton
 import androidx.compose.material3.ElevatedCard
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -71,7 +72,7 @@ class MainActivity : ComponentActivity() {
 fun TampilLayout(modifier: Modifier = Modifier){
     val image = painterResource(id = R.drawable.back)
     Column(
-        verticalArrangement = Arrangement.spacedBy(10.dp),
+        verticalArrangement = Arrangement.spacedBy(8.dp),
         modifier = Modifier
             .padding(16.dp)
     ) {
@@ -85,13 +86,14 @@ fun TampilLayout(modifier: Modifier = Modifier){
                 modifier = Modifier.padding(start = 140.dp) ,
                 text = "Register")
         }
+        Divider()
         Box(
             contentAlignment = Alignment.Center,
             modifier = Modifier.fillMaxWidth()
         ){
             Text(
-                fontSize = 30.sp,
-                text = "Create your account",
+                fontSize = 28.sp,
+                text = "Create Your Account",
                 fontWeight = FontWeight.Bold)
         }
         TampilForm()
